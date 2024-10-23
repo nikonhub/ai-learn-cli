@@ -33,20 +33,20 @@ AI-Learn is a command-line tool designed to enhance your learning experience thr
 
 2. Add items to a topic:
    ```
-   ai-learn item add 1 "Two pointer"
-   ai-learn item add 1 "Sliding window"
+   ai-learn item add {topic-id} "Two pointer"
+   ai-learn item add {topic-id} "Sliding window"
    ```
 
 ### Learning and Review
 
 1. Start a learning session for a topic:
    ```
-   ai-learn topic learn 1
+   ai-learn topic learn {topic-id}
    ```
 
 2. Provide feedback on an item after review:
    ```
-   ai-learn item feedback 2 easy
+   ai-learn item feedback {item-id} easy
    ```
 
 ## How It Works
