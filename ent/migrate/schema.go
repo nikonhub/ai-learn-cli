@@ -25,7 +25,7 @@ var (
 				Symbol:     "generated_problems_items_generated_problems",
 				Columns:    []*schema.Column{GeneratedProblemsColumns[3]},
 				RefColumns: []*schema.Column{ItemsColumns[0]},
-				OnDelete:   schema.SetNull,
+				OnDelete:   schema.Cascade,
 			},
 		},
 	}
@@ -69,7 +69,7 @@ var (
 				Symbol:     "item_progresses_items_progress",
 				Columns:    []*schema.Column{ItemProgressesColumns[5]},
 				RefColumns: []*schema.Column{ItemsColumns[0]},
-				OnDelete:   schema.SetNull,
+				OnDelete:   schema.Cascade,
 			},
 		},
 	}

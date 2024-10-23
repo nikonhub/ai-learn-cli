@@ -78,6 +78,10 @@ func (s *TopicService) AddItemToTopic(topicID int, itemName string) error {
 	return nil
 }
 
+func (s *TopicService) RemoveItem(itemID int) {
+	s.db.Client.Item.DeleteOneID(itemID).ExecX(context.Background())
+}
+
 func (s *TopicService) Learn(topicID int) (*ent.Item, *ent.GeneratedProblem, error) {
 	t, err := s.db.Client.Topic.Get(context.Background(), topicID)
 	if err != nil {

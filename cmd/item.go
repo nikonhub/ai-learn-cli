@@ -55,6 +55,21 @@ var listItemsCmd = &cobra.Command{
 	},
 }
 
+var remoteItemCmd = &cobra.Command{
+	Use:   "remove [item-id]",
+	Short: "Remove an item",
+	Args:  cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		itemID, err := strconv.Atoi(args[0])
+		if err != nil {
+			log.Fatalf("failed to parse item id: %v", err)
+		}
+
+		app := application.NewApplication()
+		app.TopicService.RemoveItem(itemID)
+	},
+}
+
 var feedbackItemCmd = &cobra.Command{
 	Use:   "feedback [item-id] [feedback]",
 	Short: "Feedback on an item : easy, medium, hard",
@@ -81,4 +96,5 @@ func init() {
 	itemCmd.AddCommand(addItemCmd)
 	itemCmd.AddCommand(listItemsCmd)
 	itemCmd.AddCommand(feedbackItemCmd)
+	itemCmd.AddCommand(remoteItemCmd)
 }

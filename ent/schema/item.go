@@ -2,6 +2,7 @@ package schema
 
 import (
 	"entgo.io/ent"
+	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/schema/edge"
 	"entgo.io/ent/schema/field"
 )
@@ -25,7 +26,13 @@ func (Item) Edges() []ent.Edge {
 		edge.From("topic", Topic.Type).
 			Ref("items").
 			Unique(),
-		edge.To("generated_problems", GeneratedProblem.Type),
-		edge.To("progress", ItemProgress.Type),
+		edge.To("generated_problems", GeneratedProblem.Type).
+			Annotations(
+				entsql.OnDelete(entsql.Cascade),
+			),
+		edge.To("progress", ItemProgress.Type).
+			Annotations(
+				entsql.OnDelete(entsql.Cascade),
+			),
 	}
 }
